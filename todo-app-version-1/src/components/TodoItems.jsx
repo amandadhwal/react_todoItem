@@ -1,10 +1,13 @@
-//send data to TodoItem.jsx file
 import TodoItem from './TodoItem.jsx';
-function Todoitems({todoItems})
-{
-      return <div>
-        {todoItems.map((item)=>(<TodoItem todoname={item.name} date={item.date} ></TodoItem>))}
-        {/* <TodoItem todoname={todoItems} date={todoItems}></TodoItem> */}
+
+function TodoItems({ todoItems, onDeleteClick }) {
+  return (
+    <div>
+      {
+        todoItems.map((item) => (<TodoItem key={item.name} todoname={item.name} date={item.date} onDeleteClick={onDeleteClick} />   ))
+      }
     </div>
+  );
 }
-export default Todoitems;
+
+export default TodoItems;

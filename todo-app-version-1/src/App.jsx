@@ -1,45 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
 import AppName from './components/AppName.jsx';
 import AddTodo from './components/AddTodo.jsx';
 // import Todoitem from './components/TodoItem.jsx';
 import TodoItems from './components/TodoItems.jsx';
+import EmptyMessage from './components/EmptyMessage.jsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() 
-{
-   // const todoItems=[
-   //    {
-   //       name:"aman",
-   //       date:"12/12/2023",
-   //    },
-   //    {
-   //       name:"pragya",
-   //       date:"02/11/2025",
-   //    },
-   //    {
-   //       name:"jenin",
-   //       date:"02/02/2012",
-   //    },
-   // ];
+function App() {
+  const [todoItems, setTodoItems] = useState([]);
 
-   const [todoItems , setTodoItems] = useState[initialTodoItems];
+  const handleNewItem = (itemName, itemDueDate) => {
+    const newTodoItems = [...todoItems, { name: itemName, date: itemDueDate }];
+    setTodoItems(newTodoItems);
+  };
 
-   const handleNewItem =(itemName,itemDate) =>
-   {
-         console.log(itemName);
+  const handleDeleteItem = (todoItemsName) => {
+    const newTodoItems = todoItems.filter(item => item.name !== todoItemsName);
+    setTodoItems(newTodoItems);
+  };
 
-   };
-
-   const appname="Todo list app";
-    return( <center className="todo-container">
-      <h1>Aman Dadhwal</h1>
+  const appname = "Todo list app";
+  return (
+    <div className="todo-container">
       <AppName Appname={appname}></AppName>
-      <AddTodo onNewItem ={handleNewItem}/>
-      <TodoItems todoItems={todoItems}></TodoItems>
-   </center>
-    )
-
+      <AddTodo onNewItem={handleNewItem} />
+      <EmptyMessage todoItems={todoItems} />
+      <TodoItems todoItems={todoItems} onDeleteClick={handleDeleteItem} />
+    </div>
+  );
 }
-export default App
+
+export default App;

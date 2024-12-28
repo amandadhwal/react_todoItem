@@ -1,6 +1,30 @@
-.kg-button{
+.todo-container {
+  margin: 20px auto;
+  max-width: 600px; /* Restrict width for better readability */
+  text-align: center;
+}
+
+.kg-row {
+  padding: 10px 0;
+}
+
+.kg-button {
+  display: flex;
+  justify-content: center; /* Center the button horizontally */
+  align-items: center; /* Center the button vertically */
   min-width: 80px;
 }
-.kg-row{
-  margin-top: 14px;
+
+.row {
+  margin: 0; /* Remove extra row margins for consistent spacing */
+}
+
+.container-center {
+  border-bottom: 1px solid #ddd; /* Optional: Adds a light separator between items */
+  padding: 10px 0;
+}
+
+button.btn-danger {
+  width: 100%; /* Ensure the button spans its parent for better responsiveness */
+  max-width: 80px; /* Limit the button size to a reasonable maximum */
 }
